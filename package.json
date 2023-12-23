@@ -1,0 +1,24 @@
+{
+  "name": "newtrail-04-arquitecture-ddd",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint:fix": "eslint src --ext .ts --fix"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@faker-js/faker": "^8.3.1",
+    "@rocketseat/eslint-config": "^2.1.0",
+    "@types/node": "^20.10.4",
+    "eslint": "^8.55.0",
+    "eslint-plugin-vitest-globals": "^1.4.0",
+    "typescript": "^5.3.3",
+    "vite-tsconfig-paths": "^4.2.2",
+    "vitest": "^1.0.4"
+  }
+}
