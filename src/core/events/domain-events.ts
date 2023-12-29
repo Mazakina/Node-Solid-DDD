@@ -8,6 +8,7 @@ export class DomainEvents {
   private static handlersMap: Record<string, DomainEventCallback[]> = {}
   private static markedAggregates: AggregateRoot<any>[] = []
 
+  //
   public static markAggregateForDispatch(aggregate: AggregateRoot<any>) {
     const aggregateFound = !!this.findMarkedAggregateByID(aggregate.id)
 
@@ -16,10 +17,12 @@ export class DomainEvents {
     }
   }
 
+  //
   private static dispatchAggregateEvents(aggregate: AggregateRoot<any>) {
     aggregate.domainEvents.forEach((event: DomainEvent) => this.dispatch(event))
   }
 
+  //
   private static removeAggregateFromMarkedDispatchList(
     aggregate: AggregateRoot<any>,
   ) {
@@ -28,12 +31,14 @@ export class DomainEvents {
     this.markedAggregates.splice(index, 1)
   }
 
+  //
   private static findMarkedAggregateByID(
     id: UniqueEntityID,
   ): AggregateRoot<any> | undefined {
     return this.markedAggregates.find((aggregate) => aggregate.id.equals(id))
   }
 
+  //
   public static dispatchEventsForAggregate(id: UniqueEntityID) {
     const aggregate = this.findMarkedAggregateByID(id)
 
@@ -44,6 +49,7 @@ export class DomainEvents {
     }
   }
 
+  //
   public static register(
     callback: DomainEventCallback,
     eventClassName: string,
@@ -57,14 +63,17 @@ export class DomainEvents {
     this.handlersMap[eventClassName].push(callback)
   }
 
+  //
   public static clearHandlers() {
     this.handlersMap = {}
   }
 
+  //
   public static clearMarkedAggregates() {
     this.markedAggregates = []
   }
 
+  //
   private static dispatch(event: DomainEvent) {
     const eventClassName: string = event.constructor.name
 

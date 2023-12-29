@@ -1,15 +1,15 @@
 import { makeNotification } from 'test/factories/make-notification'
 import { ReadNotificationUseCase } from './read-notification'
-import { InMemoryNotificationRepository } from 'test/repositories/in-memory-notifications-repository'
 import { UniqueEntityID } from '@/core/entities/unique-entity-id'
 import { NotAllowedError } from '@/core/errors/errors/not-allowed-error'
+import { InMemoryNotificationsRepository } from 'test/repositories/in-memory-notifications-repository'
 
-let inMemoryNotificationRepository: InMemoryNotificationRepository
+let inMemoryNotificationRepository: InMemoryNotificationsRepository
 let sut: ReadNotificationUseCase
 
 describe('Read Notification', () => {
   beforeEach(() => {
-    inMemoryNotificationRepository = new InMemoryNotificationRepository()
+    inMemoryNotificationRepository = new InMemoryNotificationsRepository()
     sut = new ReadNotificationUseCase(inMemoryNotificationRepository)
   })
   // sut =system under test
